@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html , body {
+      height: 100%;
+    }
+    *,
+    *::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    main {
+      max-width: 100%;
+      height: 100%;
+    }
+
+    .back__side {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.445);
+      z-index: 1;
+    }
+
+    .form {
+      display: flex;
+      background-color: wheat;
+      padding: 12px;
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      margin: 29% auto;
+    }
+
+    .form__wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-right: 12px;
+    }
+    .hide {
+      display: none;
+    }
+    input {
+      margin-bottom: 7px;
+    }
+    button[type=submit] {
+      align-self: flex-end;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <button onclick="shide()">Начать!</button>
+    <div stop onclick="shide()" class="back__side hide">
+    </div>
+    <form class="form hide hide" action="https://jsonplaceholder.typicode.com/posts" method="post">
+      <div class="form__wrapper fw-1">
+        <input placeholder="Имя" name="name" type="text">
+        <input placeholder="Фамилия" name="last-name" type="text">
+        <input placeholder="Возраст" name="years-old" type="text">
+      </div>
+      <div class="form__wrapper fw-2">
+        <input placeholder="папа" name="dad" type="text">
+        <input placeholder="мама" name="mom" type="text">
+      </div>
+      <button type="submit">отправить</button>
+    </form>
+  </main>
+  <script>
+    const form = document.querySelector('.form')
+    const backSide = document.querySelector('.back__side')
+    function shide() {
+      [form, backSide].forEach((item) => item.classList.toggle('hide'))
+    }
+
+  </script>
+</body>
+
+</html>
